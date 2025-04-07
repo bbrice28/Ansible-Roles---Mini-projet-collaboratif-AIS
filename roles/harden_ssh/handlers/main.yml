@@ -1,0 +1,7 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers file for harden_ssh
+- name: Redémarrer ssh
+  service:
+    name: ssh
+    state: restarted

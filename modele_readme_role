@@ -1,0 +1,87 @@
+# Rôle Ansible : nom_du_rôle
+
+## 🎯 Objectif
+Ce rôle Ansible a pour objectif de [décrire la finalité du rôle, ex : "configurer un accès SSH sécurisé sur une machine Linux Debian-like en conformité avec les recommandations d’une PSSI"].
+
+Il est destiné à être utilisé dans des environnements [Linux/Windows/équipements réseau], dans un cadre de [formation / production / test].
+
+---
+
+## 📦 Fonctions assurées
+Ce rôle réalise les actions suivantes :
+- [Ex : Désactive l’accès SSH en root]
+- [Ex : Force l’usage d’algorithmes de chiffrement sécurisés]
+- [Ex : Configure un port SSH personnalisé]
+- [Ex : Applique une bannière légale]
+- [Etc.]
+
+---
+
+## ⚙️ Variables disponibles
+Les variables suivantes peuvent être définies dans un playbook ou un fichier d’inventaire pour personnaliser le rôle :
+
+| Variable | Description | Valeur par défaut |
+|----------|-------------|-------------------|
+| `ssh_port` | Port SSH utilisé | `22` |
+| `allow_root_login` | Autoriser la connexion root (yes/no) | `no` |
+| `ssh_banner_text` | Texte de la bannière légale | `""` |
+| ... | ... | ... |
+
+---
+
+## 🧰 Prérequis
+- Système cible : [ex : Debian 11+, Ubuntu 20.04+, CentOS 8]
+- Ansible version : `>= 2.11`
+- Accès root ou privilèges sudo sur la machine cible
+- Clé SSH fonctionnelle
+
+---
+
+## 🚀 Exemple d’utilisation
+Voici un exemple de playbook utilisant ce rôle :
+
+```yaml
+- name: Appliquer le durcissement SSH
+  hosts: serveurs_linux
+  become: true
+  roles:
+    - role: nom_du_rôle
+      vars:
+        ssh_port: 2222
+        allow_root_login: "no"
+        ssh_banner_text: "Accès réservé aux utilisateurs autorisés. Toute activité est surveillée."
+
+---
+
+## 🔍 Testé sur
+Debian 12 ✅
+Ubuntu 22.04 ✅
+CentOS 8
+Autre : ... 
+
+---
+
+## 📚 Ressources
+- [Lien vers la documentation officielle Ansible pour les modules utilisés](https://docs.ansible.com/)
+- [Normes de sécurité recommandées (ex : ANSSI, CIS Benchmark)](https://www.ssi.gouv.fr/)
+- [Exemples de rôles similaires open source (dev-sec, geerlingguy...)](https://galaxy.ansible.com/)
+    
+
+---
+
+## ✍️ Auteur
+Rôle développé dans le cadre de la formation **Administrateur d’Infrastructures Sécurisées** à la **Wild Code School**.
+
+**Auteur** : [Prénom NOM]  
+**Date** : [JJ/MM/AAAA]  
+**Contact** : [mail / GitHub (facultatif)]
+
+---
+
+## ✅ État du rôle
+|Élément|Statut|
+|---|---|
+|Code testé en local|✅ Oui / ⛔ Non|
+|Variables documentées|✅ Oui / ⛔ Non|
+|README à jour|✅ Oui / ⛔ Non|
+|Conformité PSSI / bonnes pratiques|✅ Oui / ⛔ Non|

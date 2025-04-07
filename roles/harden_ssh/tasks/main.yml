@@ -1,0 +1,23 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for harden_ssh
+- name: Déployer la bannière
+  copy:
+    src: files/issue.net
+    dest: /etc/issue.net
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Redémarrer ssh
+
+- name: Déployer les fichiers de configuration SSH
+  copy:
+    src: "files/{{ item }}"
+    dest: "/etc/ssh/sshd_config.d/{{ item }}"
+    mode: '0644'
+    owner: root
+    group: root
+  loop:
+    - crypto.conf
+    - harden.conf
+  notify: Redémarrer ssh

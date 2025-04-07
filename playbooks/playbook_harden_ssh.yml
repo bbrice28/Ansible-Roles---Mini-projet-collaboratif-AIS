@@ -1,0 +1,8 @@
+---
+# Playbook pour le durcissement SSH
+# Nécessite l’option --ask-become-pass à l’exécution pour fournir le mot de passe sudo
+- name: Durcir SSH sur les machines Debian
+  hosts: debian
+  become: true
+  roles:
+    - harden_ssh

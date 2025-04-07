@@ -1,0 +1,29 @@
+---
+galaxy_info:
+  role_name: harden_ssh
+  author: Julien GREGOIRE
+  description: Rôle Ansible pour durcir la configuration SSH sur des machines Debian-like en conformité avec une PSSI.
+  company: Wild Code School
+  license: MIT
+
+  min_ansible_version: 2.11
+
+  platforms:
+    - name: Debian
+      versions:
+        - bullseye
+        - bookworm
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+
+  galaxy_tags:
+    - ssh
+    - security
+    - hardening
+    - debian
+    - pssi
+    - ansible-role
+
+dependencies: []
