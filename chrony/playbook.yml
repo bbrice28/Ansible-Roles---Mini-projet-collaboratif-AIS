@@ -1,0 +1,11 @@
+# playbook.yml
+---
+- name: Configuration de la synchronisation horaire avec Chrony
+  hosts: all
+  become: true
+
+  vars:
+    ntp_server: "fr.pool.ntp.org"
+
+  roles:
+    - chrony
