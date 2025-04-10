@@ -1,0 +1,6 @@
+# chrony/handlers/main.yml
+---
+- name: Redémarrer chrony
+  service:
+    name: chrony
+    state: restarted
