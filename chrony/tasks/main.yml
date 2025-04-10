@@ -1,0 +1,22 @@
+# chrony/tasks/main.yml
+---
+- name: Installer le paquet chrony
+  apt:
+    name: chrony
+    state: present
+    update_cache: yes
+
+- name: Copier le fichier de configuration
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony/chrony.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Redémarrer chrony
+
+- name: S'assurer que le service chrony est activé et lancé
+  service:
+    name: chrony
+    state: started
+    enabled: yes
