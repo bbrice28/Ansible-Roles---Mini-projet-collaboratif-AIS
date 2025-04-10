@@ -1,0 +1,41 @@
+# chrony.conf.j2
+# **Configuration de base pour chrony**
+
+# Si vous souhaitez que votre serveur Debian/ansible soit aussi votre serveur NTP
+pool {{ ntp_server | default('pool.ntp.org') }} iburst
+        
+
+driftfile /var/lib/chrony/chrony.drift
+
+makestep 1.0 3
+
+rtcsync
+
+logdir /var/log/chrony
+
+# Autoriser uniquement localhost à se connecter
+bindaddress 127.0.0.1
+
+allow 127.0.0.1
+
+
+# **Ou Si vous souhaitez que votre serveur AD soit votre serveur NTP**
+
+# chrony.conf.j2
+# Configuration de Chrony pour utiliser un serveur AD comme source NTP
+
+server {{ ntp_server | default('192.168.1.10') }} iburst
+
+driftfile /var/lib/chrony/chrony.drift
+
+makestep 1.0 3
+
+rtcsync
+
+logdir /var/log/chrony
+
+# Sécurisation : autoriser uniquement le loopback pour les requêtes
+bindaddress 127.0.0.1
+
+# Autoriser éventuellement l'accès à chronyd depuis localhost
+allow 127.0.0.1
